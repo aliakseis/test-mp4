@@ -12,8 +12,8 @@ find_package(PkgConfig)
 # gstreamer-1.0 の存在チェック
 pkg_check_modules(GSTREAMER REQUIRED 
   glib-2.0
-  json-glib-1.0
-  libsoup-2.4
+#  json-glib-1.0
+#  libsoup-2.4
   gstreamer-1.0 
   gstreamer-sdp-1.0
   gstreamer-rtp-1.0
