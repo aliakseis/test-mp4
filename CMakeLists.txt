@@ -6,30 +6,22 @@ project(test-mp4 C CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 
-# pkg-config を使ってモジュールを読み込む
-find_package(PkgConfig)
+#find_package(PkgConfig)
 
-# gstreamer-1.0 の存在チェック
-pkg_check_modules(GSTREAMER REQUIRED 
-  glib-2.0
-#  json-glib-1.0
-#  libsoup-2.4
-  gstreamer-1.0 
-  gstreamer-sdp-1.0
-  gstreamer-rtp-1.0
-  gstreamer-rtsp-1.0
-  gstreamer-rtsp-server-1.0
-)
+#pkg_check_modules(GSTREAMER REQUIRED 
+#  glib-2.0
+#  gstreamer-1.0 
+#  gstreamer-sdp-1.0
+#  gstreamer-rtp-1.0
+#  gstreamer-rtsp-1.0
+#  gstreamer-rtsp-server-1.0
+#)
 
-# gstreamer のヘッダーファイルへのパスを表示
-message("GSTREAMER_INCLUDE_DIRS: ${GSTREAMER_INCLUDE_DIRS}")
+#message("GSTREAMER_INCLUDE_DIRS: ${GSTREAMER_INCLUDE_DIRS}")
 
-# gstreamer のライブラリへのパスを表示
-message("GSTREAMER_LIBRARY_DIRS: ${GSTREAMER_LIBRARY_DIRS}")
+#message("GSTREAMER_LIBRARY_DIRS: ${GSTREAMER_LIBRARY_DIRS}")
 
-
-# gstreamermm のライブラリのパスを設定
-link_directories(${GSTREAMER_LIBRARY_DIRS})
+#link_directories(${GSTREAMER_LIBRARY_DIRS})
 
 # コンパイルフラグを設定
 #set(CMAKE_C_FLAGS "-Wall")
@@ -43,6 +35,9 @@ link_directories(${GSTREAMER_LIBRARY_DIRS})
 #set(CMAKE_CXX_FLAGS_RELEASE "-O2 -s -DNDEBUG -march=native")
 #set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-g3 -Og -pg")
 #set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os -s DNDEBUG -march=native")
+
+include(cmake/detect_gstreamer.cmake)
+
 
 # 実行ファイルの作成
 add_executable(test-mp4 
